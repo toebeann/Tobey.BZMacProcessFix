@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Tobey.BZMacProcessFix
 {
@@ -23,6 +24,11 @@ namespace Tobey.BZMacProcessFix
         // which include a process filter for "SubnauticaZero" so that they will work on macOS, where the process name is "Subnautica Below Zero"
         public static void Initialize()
         {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {   // only run the patcher on macOS
+                return;
+            }
+
             var dlls = Directory.GetFiles(Paths.PluginPath, "*.dll", SearchOption.AllDirectories).Distinct();
 
             var bepinProcessType = typeof(BepInProcess);
