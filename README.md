@@ -4,4 +4,4 @@ A BepInEx patcher which allows BepInEx plugins with the process filter "Subnauti
 
 ## Usage
 
-Just download the .zip from [the releases page](https://github.com/toebeann/Tobey.BZMacProcessFix/releases) and plop it in your Subnautica: Below Zero game folder - no configuration needed!
+Just download the .zip from [the releases page](https://github.com/toebeann/Tobey.BZMacProcessFix/releases) and plop it in your Subnautica: Below Zero game folder (after installing [Tobey's BepInEx Pack for Subnautica: Below Zero](https://github.com/toebeann/BepInEx.SubnauticaZero), of course) - no configuration needed!
