@@ -75,7 +75,7 @@ namespace Tobey.BZMacProcessFix
                             }
                             catch (IOException)
                             {
-                                logger.LogWarning($"Could not apply fix to [{relativePath}] as it is already in use by another process - likely another BepInEx patcher.");
+                                logger.LogWarning($"Could not apply fix to [{relativePath}] as it is already in use by another process.");
                                 
                                 var workaroundPath = $"{dll}.PATCHED";
                                 assembly.Write(workaroundPath);
