@@ -51,11 +51,11 @@ namespace Tobey.BZMacProcessFix
 
                                 type.CustomAttributes.Any(a =>
                                     a.AttributeType.FullName == typeof(BepInProcess).FullName &&
-                                    a.ConstructorArguments.SingleOrDefault(arg => arg.Value is string).Value as string == "SubnauticaZero") &&
+                                    string.Equals((a.ConstructorArguments.SingleOrDefault(arg => arg.Value is string).Value as string).Replace(".exe", string.Empty), "SubnauticaZero", StringComparison.InvariantCultureIgnoreCase)) &&
 
                                 !type.CustomAttributes.Any(a =>
                                     a.AttributeType.FullName == typeof(BepInProcess).FullName &&
-                                    a.ConstructorArguments.SingleOrDefault(arg => arg.Value is string).Value as string == "Subnautica Below Zero"));
+                                    string.Equals((a.ConstructorArguments.SingleOrDefault(arg => arg.Value is string).Value as string).Replace(".exe", string.Empty), "Subnautica Below Zero", StringComparison.InvariantCultureIgnoreCase)));
 
                         if (plugins.Any())
                         {
@@ -76,7 +76,7 @@ namespace Tobey.BZMacProcessFix
                             catch (IOException)
                             {
                                 logger.LogWarning($"Could not apply fix to [{relativePath}] as it is already in use by another process.");
-                                
+
                                 var workaroundPath = $"{dll}.PATCHED";
                                 assembly.Write(workaroundPath);
                                 logger.LogWarning($"Saved fix to [{GetRelativePath(workaroundPath, Paths.GameRootPath)}] instead. You will need to quit the game, manually replace the original file with the patched one and then relaunch the game.");
